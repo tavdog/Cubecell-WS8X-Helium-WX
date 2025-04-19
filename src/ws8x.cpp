@@ -156,6 +156,8 @@ void ws8x_populate_lora_buffer(uint8_t* m_lora_app_data, int size)
     offset += sizeof(int16_t);
     memcpy(&m_lora_app_data[offset], &intVelAvg, sizeof(int16_t));
     offset += sizeof(int16_t);
+    #ifndef SEND_MIN_BYTES
+    Serial.println("populating full buffer of 18 bytes");
     memcpy(&m_lora_app_data[offset], &intGust, sizeof(int16_t));
     offset += sizeof(int16_t);
     memcpy(&m_lora_app_data[offset], &intLull, sizeof(int16_t));
@@ -170,6 +172,7 @@ void ws8x_populate_lora_buffer(uint8_t* m_lora_app_data, int size)
     offset += sizeof(uint16_t);
     memcpy(&m_lora_app_data[offset], &deviceVoltage_mv, sizeof(uint16_t));
     offset += sizeof(uint16_t);
+    #endif
 
     // Print debug information
     Serial.print("Payload bytes: ");

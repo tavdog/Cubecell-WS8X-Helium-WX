@@ -55,11 +55,11 @@ static void prepareTxFrame(uint8_t port)
 	 *for example, if use REGION_CN470,
 	 *the max value for different DR can be found in MaxPayloadOfDatarateCN470 refer to DataratesCN470 and BandwidthsCN470 in "RegionCN470.h".
 	 */
-	appDataSize = 18;
-	appData[0] = 0x00;
-	appData[1] = 0x01;
-	appData[2] = 0x02;
-	appData[3] = 0x03;
+	// appDataSize = 4;
+	// appData[0] = 0x00;
+	// appData[1] = 0x01;
+	// appData[2] = 0x02;
+	// appData[3] = 0x03;
 }
 
 void setup()
