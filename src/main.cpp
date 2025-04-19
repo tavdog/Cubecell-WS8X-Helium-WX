@@ -4,6 +4,7 @@
 #include "keys.h"
 
 extern bool wakeByUart;
+extern bool g_lora_debug = true;
 /* OTAA para*/
 uint8_t devEui[8] = NODE_DEVICE_EUI;
 uint8_t appEui[8] = NODE_APP_EUI;
