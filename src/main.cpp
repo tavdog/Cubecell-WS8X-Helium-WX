@@ -52,7 +52,9 @@ void setup()
 	delay(5000);
 	deviceState = DEVICE_STATE_INIT;
 	LoRaWAN.ifskipjoin();
-		
+	// Adjust the size of the payload to the 18 bytes populated from WS8X
+	appDataSize = 18;
+	Serial.printf("app data size %d\r\n", appDataSize);		
 	wakeByUart = true;
 }
 
