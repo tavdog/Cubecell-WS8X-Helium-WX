@@ -45,23 +45,6 @@ uint8_t appPort = 2;
 
 uint8_t confirmedNbTrials = 4;
 
-/* Prepares the payload of the frame */
-static void prepareTxFrame(uint8_t port)
-{
-	/*appData size is LORAWAN_APP_DATA_MAX_SIZE which is defined in "commissioning.h".
-	 *appDataSize max value is LORAWAN_APP_DATA_MAX_SIZE.
-	 *if enabled AT, don't modify LORAWAN_APP_DATA_MAX_SIZE, it may cause system hanging or failure.
-	 *if disabled AT, LORAWAN_APP_DATA_MAX_SIZE can be modified, the max value is reference to lorawan region and SF.
-	 *for example, if use REGION_CN470,
-	 *the max value for different DR can be found in MaxPayloadOfDatarateCN470 refer to DataratesCN470 and BandwidthsCN470 in "RegionCN470.h".
-	 */
-	// appDataSize = 4;
-	// appData[0] = 0x00;
-	// appData[1] = 0x01;
-	// appData[2] = 0x02;
-	// appData[3] = 0x03;
-}
-
 void setup()
 {
 	boardInitMcu();
@@ -97,7 +80,6 @@ void loop()
 	case DEVICE_STATE_SEND:
 	{
 		ws8x_populate_lora_buffer(appData, appDataSize);
-		// prepareTxFrame(appPort);
 		LoRaWAN.send();
 		deviceState = DEVICE_STATE_CYCLE;
 		break;
