@@ -25,7 +25,7 @@ LoRaMacRegion_t loraWanRegion = ACTIVE_REGION;
 DeviceClass_t loraWanClass = LORAWAN_CLASS;
 
 /*the application data transmission duty cycle.  value in [ms].*/
-uint32_t appTxDutyCycle = 30000;
+uint32_t appTxDutyCycle = 60000;
 
 /*OTAA or ABP*/
 bool overTheAirActivation = LORAWAN_NETMODE;
@@ -47,6 +47,9 @@ uint8_t confirmedNbTrials = 4;
 
 void setup()
 {
+#ifdef INTERVAL_MINUTES
+	appTxDutyCycle = INTERVAL_MINUTES * 60000;
+#endif
 	boardInitMcu();
 	Serial.begin(115200);
 	delay(5000);
